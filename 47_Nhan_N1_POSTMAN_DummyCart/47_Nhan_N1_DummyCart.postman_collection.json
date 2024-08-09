@@ -1,0 +1,182 @@
+{
+	"info": {
+		"_postman_id": "3f34c62a-4724-4c84-88e7-8b4187786ab4",
+		"name": "47_Nhan_N1_DummyCart",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34540999",
+		"_collection_link": "https://www.postman.com/solar-meadow-517072/workspace/47-nhan-n1-dummyjson/collection/34540999-3f34c62a-4724-4c84-88e7-8b4187786ab4?action=share&source=collection_link&creator=34540999"
+	},
+	"item": [
+		{
+			"name": "TC1_get_all_cart_47_Nhan_N1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Kiểm tra status code là 200",
+							"pm.test(\"Status code là 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"//Kiểm tra lượng dữ liệu phản hồi lớn hơn 50",
+							"pm.test(\"Lượng dữ liệu phản hồi lớn hơn 50\", function () {",
+							"    var jsonData_47_Nhan = pm.response.json();",
+							"    pm.expect(jsonData_47_Nhan.length).to.be.above(50);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dummyjson.com/carts",
+					"protocol": "https",
+					"host": [
+						"dummyjson",
+						"com"
+					],
+					"path": [
+						"carts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC2_get_single_cart_47_Nhan_N1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Kiểm tra status code là 200",
+							"pm.test(\"Status code là 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"//Kiểm tra thời gian dữ liệu phản hồi bé hơn 1 giây",
+							"pm.test(\"Thời gian phản hồi dưới 1s\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dummyjson.com/carts/1",
+					"protocol": "https",
+					"host": [
+						"dummyjson",
+						"com"
+					],
+					"path": [
+						"carts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC3_put_cart_47_Nhan_N1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Kiểm tra status code là 200",
+							"pm.test(\"Status code là 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"// Kiểm tra dữ liệu đã được update thành công chưa",
+							"pm.test(\"Kiểm tra dữ liệu được cập nhật\", function () {",
+							"    var jsonData_Nhan47 = pm.response.json();",
+							"    pm.expect(jsonData_Nhan47.title).to.equal(\"47_Nhan_N1\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"47_Nhan_N1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dummyjson.com/products/1",
+					"protocol": "https",
+					"host": [
+						"dummyjson",
+						"com"
+					],
+					"path": [
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC4_delete_cart_47_Nhan_N1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Kiểm tra status code là 200",
+							"pm.test(\"Status code là 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"//Kiểm tra dữ liệu đã được xoá chưa",
+							"pm.test(\"Kiểm tra đã xoá dữ liệu chưa\", function () {",
+							"    var jsonData_47_Nhan = pm.response.json();",
+							"    pm.expect(jsonData_47_Nhan.isDeleted).to.be.true;",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://dummyjson.com/carts/1",
+					"protocol": "https",
+					"host": [
+						"dummyjson",
+						"com"
+					],
+					"path": [
+						"carts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
